@@ -7,5 +7,6 @@ import Entity.user;
 public interface IuserDAO {
 
 	public user findByLogin(String name);
-	public ArrayList<user> findAll(); 
+	public ArrayList<user> findAll();
+	public void persist(user u);
 }

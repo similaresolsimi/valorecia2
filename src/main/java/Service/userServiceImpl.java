@@ -10,14 +10,20 @@ public class userServiceImpl implements IuserService{
 	
 	@Override
 	public String authorize(user u) {
-		// TODO Auto-generated method stub
-		return null;
+		DAO.findByLogin(u.getLogin());
+		DAO.persist(u);
+		return "ok";
 	}
 
 	@Override
 	public String authorize(String nom, String prenom, String login, String pswd) {
-		// TODO Auto-generated method stub
-		return null;
+		user u = new user();
+		u.setLogin(login);
+		u.setNom(nom);
+		u.setPrenom(prenom);
+		u.setPswd(pswd);
+		DAO.persist(u);
+		return "ok";
 	}
 
 }

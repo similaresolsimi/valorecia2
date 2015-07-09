@@ -4,13 +4,15 @@ import java.util.ArrayList;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 import Entity.user;
 
 @Stateless 
 public class userDAOImpl implements IuserDAO{
 
-	private EntityManager em;
+	protected EntityManager em;
 
 	public userDAOImpl() {
 	}
@@ -18,6 +20,7 @@ public class userDAOImpl implements IuserDAO{
 	@Override
 	public user findByLogin(String login) {
 		user u = em.find(user.class, login);
+		System.out.println(u.getNom());
 		return u;
 	}
 
@@ -25,6 +28,14 @@ public class userDAOImpl implements IuserDAO{
 	public ArrayList<user> findAll() {
 		
 		return null;
+	}
+
+	@Override
+	public void persist(user u) {
+		EntityManagerFactory fact= Persistence.createEntityManagerFactory("primary");
+		em = fact.createEntityManager();
+		em.persist(u);
+		System.out.println("blabla");
 	}
 
 }
