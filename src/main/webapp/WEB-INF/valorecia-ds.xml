@@ -30,7 +30,7 @@
         <driver>h2</driver>
         <security>
             <user-name>postgres</user-name>
-            <password>admin87</password>
+            <password>admin</password>
         </security>
     </datasource>
     

@@ -9,15 +9,19 @@ import Service.userServiceImpl;
 @Model
 public class Login {
 	@Inject
-	private IuserService myService = new userServiceImpl();
-	private String name;
-	private String pswd;
-	private String result;
+	private IuserService myService;
+	private String name="";
+	private String pswd="";
+	private String result="";
+	
+	public Login(){
+		
+	}
 	
 	public String valide(){
 //		result = myService.authorize(name, pswd);
-		result = myService.authorize("name","ok",name,pswd);
-		return result;
+		myService.authorize("name","ok",name,pswd);
+		return "index";
 	}
 	
 	public String getResult() {

@@ -6,16 +6,15 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 import Entity.user;
 
-@Stateless 
 public class userDAOImpl implements IuserDAO{
 
+	@PersistenceContext(unitName = "primary") 
 	protected EntityManager em;
 
-	public userDAOImpl() {
-	}
 	
 	@Override
 	public user findByLogin(String login) {
@@ -32,9 +31,20 @@ public class userDAOImpl implements IuserDAO{
 
 	@Override
 	public void persist(user u) {
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		EntityManagerFactory fact= Persistence.createEntityManagerFactory("primary");
-		em = fact.createEntityManager();
-		em.persist(u);
+		if(fact.isOpen()){
+			em = fact.createEntityManager();
+			
+	//		em.getTransaction().begin();
+	//		em.persist(u);
+	//		em.getTransaction().commit();
+			}
 		System.out.println("blabla");
 	}
 
