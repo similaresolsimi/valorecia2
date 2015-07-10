@@ -34,16 +34,16 @@
         </security>
     </datasource>
     
-    <datasource jndi-name="java:jboss/datasources/valorecia"
-        pool-name="valorecia2" enabled="false"
-        use-java-context="true">
-        <connection-url>jdbc:postgresql://localhost:5432/valorecia;</connection-url>
-        <driver>postgres</driver>
-        <security>
-            <user-name>postgres</user-name>
-            <password>admin87</password>
-        </security>
-    </datasource>
+<!--     <datasource jndi-name="java:jboss/datasources/valorecia" -->
+<!--         pool-name="valorecia2" enabled="false" -->
+<!--         use-java-context="true"> -->
+<!--         <connection-url>jdbc:postgresql://localhost:5432/valorecia;</connection-url> -->
+<!--         <driver>postgres</driver> -->
+<!--         <security> -->
+<!--             <user-name>postgres</user-name> -->
+<!--             <password>admin87</password> -->
+<!--         </security> -->
+<!--     </datasource> -->
     
 </datasources>
  

@@ -10,10 +10,11 @@ import javax.persistence.PersistenceContext;
 
 import Entity.userEntity;
 
+
 public class userDAOImpl implements IuserDAO{
-	@Produces
-		@PersistenceContext 
 	
+	@Produces
+	@PersistenceContext
 	private EntityManager em;
 
 	
