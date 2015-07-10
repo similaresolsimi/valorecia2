@@ -2,7 +2,7 @@ package DAO;
 
 import java.util.ArrayList;
 
-import javax.ejb.Stateless;
+import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -11,9 +11,10 @@ import javax.persistence.PersistenceContext;
 import Entity.user;
 
 public class userDAOImpl implements IuserDAO{
-
+@Produces
 	@PersistenceContext(unitName = "primary") 
-	protected EntityManager em;
+	
+	private EntityManager em;
 
 	
 	@Override
@@ -26,25 +27,19 @@ public class userDAOImpl implements IuserDAO{
 	@Override
 	public ArrayList<user> findAll() {
 		
-		return null;
+		return new ArrayList<user>();
 	}
 
 	@Override
 	public void persist(user u) {
-		try {
-			Class.forName("org.postgresql.Driver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		EntityManagerFactory fact= Persistence.createEntityManagerFactory("primary");
-		if(fact.isOpen()){
+		EntityManagerFactory fact= Persistence.createEntityManagerFactory("jdbc:postgresql://localhost:5434/valorecia;create");
+	
 			em = fact.createEntityManager();
 			
-	//		em.getTransaction().begin();
-	//		em.persist(u);
-	//		em.getTransaction().commit();
-			}
+			em.getTransaction().begin();
+			em.persist(u);
+			em.getTransaction().commit();
+		
 		System.out.println("blabla");
 	}
 

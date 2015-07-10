@@ -21,10 +21,10 @@ public class user implements Serializable{
 	@Id
 	@GeneratedValue
 	private int id;
-	private String nom;
-	private String prenom;
-	private String login;
-	private String pswd;
+	private String nom="";
+	private String prenom="";
+	private String login="";
+	private String pswd="";
 	public user(){
 	}
 	public int getId() {

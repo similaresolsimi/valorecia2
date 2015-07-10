@@ -1,10 +1,13 @@
 package Service;
 
+import javax.inject.Inject;
+
 import DAO.IuserDAO;
 import Entity.user;
 
 public class userServiceImpl implements IuserService{
 
+	@Inject
 	public IuserDAO DAO;
 	
 	@Override
