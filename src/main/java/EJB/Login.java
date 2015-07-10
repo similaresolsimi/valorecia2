@@ -4,7 +4,6 @@ import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
 import Service.IuserService;
-import Service.userServiceImpl;
 
 @Model
 public class Login {
@@ -19,7 +18,6 @@ public class Login {
 	}
 	
 	public String valide(){
-//		result = myService.authorize(name, pswd);
 		myService.authorize("name","ok",name,pswd);
 		return "index";
 	}

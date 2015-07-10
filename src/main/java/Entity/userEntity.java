@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class user implements Serializable{
+public class userEntity implements Serializable{
 
 	/**
 	 * 
@@ -25,7 +25,7 @@ public class user implements Serializable{
 	private String prenom="";
 	private String login="";
 	private String pswd="";
-	public user(){
+	public userEntity(){
 	}
 	public int getId() {
 		return id;

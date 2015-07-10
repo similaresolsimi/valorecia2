@@ -3,7 +3,7 @@ package Service;
 import javax.inject.Inject;
 
 import DAO.IuserDAO;
-import Entity.user;
+import Entity.userEntity;
 
 public class userServiceImpl implements IuserService{
 
@@ -11,14 +11,14 @@ public class userServiceImpl implements IuserService{
 	public IuserDAO DAO;
 	
 	@Override
-	public String authorize(user u) {
+	public String authorize(userEntity u) {
 		
 		return null;
 	}
 
 	@Override
 	public String authorize(String nom, String prenom, String login, String pswd) {
-		user u = new user();
+		userEntity u = new userEntity();
 		u.setNom(nom);
 		u.setPrenom(prenom);
 		u.setLogin(login);

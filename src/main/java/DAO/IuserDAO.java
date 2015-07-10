@@ -2,11 +2,11 @@ package DAO;
 
 import java.util.ArrayList;
 
-import Entity.user;
+import Entity.userEntity;
 
 public interface IuserDAO {
 
-	public user findByLogin(String name);
-	public ArrayList<user> findAll();
-	public void persist(user u);
+	public userEntity findByLogin(String name);
+	public ArrayList<userEntity> findAll();
+	public void persist(userEntity u);
 }

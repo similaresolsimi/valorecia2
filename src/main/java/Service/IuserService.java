@@ -1,9 +1,9 @@
 package Service;
 
-import Entity.user;
+import Entity.userEntity;
 
 public interface IuserService {
 	
-	public String authorize(user u);
+	public String authorize(userEntity u);
 	public String authorize(String nom,String prenom,String login,String pswd);
 }
