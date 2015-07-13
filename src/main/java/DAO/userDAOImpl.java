@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import Entity.userEntity;
 
@@ -19,35 +20,39 @@ public class userDAOImpl implements IuserDAO{
 
 	
 	@Override
-	public userEntity findByLogin(String login) {
-		userEntity u = em.find(userEntity.class, login);
-		System.out.println(u.getNom());
-		return u;
+	public userEntity findByLogin(String login, String pswd) {
+		Query q = em.createQuery("SELECT * FROM  userentity e WHERE login = :login AND pswd = :pswd");       
+		q.setParameter("login", login);  
+		q.setParameter("pswd", pswd); 
+		return (userEntity) q.getSingleResult();
 	}
 
 	@Override
 	public ArrayList<userEntity> findAll() {
-		
-		return new ArrayList<userEntity>();
+		EntityManagerFactory fact= Persistence.createEntityManagerFactory("primary");
+		em = fact.createEntityManager();
+		Query q = em.createQuery("SELECT * FROM  userentity");    
+		@SuppressWarnings("unchecked")
+		ArrayList<userEntity> lst = (ArrayList<userEntity>) q.getResultList();
+		return lst;
 	}
 
 	@Override
 	public void persist(userEntity u) {
-//		try {
-//			Class.forName("postgresql");
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		EntityManagerFactory fact= Persistence.createEntityManagerFactory("primary");
-	
-			em = fact.createEntityManager();
-			
-			em.getTransaction().begin();
-			em.persist(u);
-			em.getTransaction().commit();
-		
-		System.out.println("blabla");
+		em = fact.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(u);
+		em.getTransaction().commit();
+	}
+
+	@Override
+	public void remove(userEntity u) {
+		EntityManagerFactory fact= Persistence.createEntityManagerFactory("primary");
+		em = fact.createEntityManager();
+		em.getTransaction().begin();
+		em.remove(u);
+		em.getTransaction().commit();		
 	}
 
 }
