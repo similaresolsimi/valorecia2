@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 
 import DAO.IuserDAO;
+import EJB.userBean;
 import Entity.userEntity;
 
 public class userServiceImpl implements IuserService{
@@ -30,11 +31,24 @@ public class userServiceImpl implements IuserService{
 	}
 
 	@Override
-	public ArrayList<userEntity> finAll() {
+	public ArrayList<userBean> finAll() {
 		if(DAO.findAll().size() >0){
-			return DAO.findAll();
+			return toUserBean(DAO.findAll());
 		}
-		else return new ArrayList<userEntity>();
+		else return toUserBean(new ArrayList<userEntity>());
+	}
+	
+	public ArrayList<userBean> toUserBean(ArrayList<userEntity> lst){
+		ArrayList<userBean> beans = new ArrayList<userBean>();
+		for(userEntity ue : lst){
+			userBean b = new userBean();
+			b.setLogin(ue.getLogin());
+			b.setNom(ue.getNom());
+			b.setPrenom(ue.getPrenom());
+			b.setPswd(ue.getPswd());
+			beans.add(b);
+		}
+		return beans;
 	}
 
 }

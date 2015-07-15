@@ -4,24 +4,58 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head></h:head> 
+<h:head>
+<h:outputStylesheet name="style.css" library="css" />
+</h:head> 
 <body> 
-	<h:dataTable value="#{login.userLst}" var="var">
+ <h:form>
+	<h:dataTable styleClass="Table"
+         headerClass="TableHeader"
+         rowClasses="TableOddRow" value="#{login.userLst}" var="var">
 <!-- 		<h:column> -->
 <!-- 			<h:outputText value="#{var.id}"/> -->
 <!-- 		</h:column> -->
 		<h:column>
-			<h:outputText value="#{var.login}"/>
+		 <f:facet name="header">Login</f:facet>   
+			<h:inputText size="20" value="#{var.login}" rendered="#{var.editable}" />
+			<h:outputText size="20" value="#{var.login}" rendered="#{not var.editable}"/>  
 		</h:column>
 		<h:column>
-			<h:outputText value="#{var.nom}"/>
+		 <f:facet name="header">Nom</f:facet>   
+			<h:inputText size="20" value="#{var.nom}" rendered="#{var.editable}" />
+			<h:outputText size="20" value="#{var.nom}" rendered="#{not var.editable}"/>
+		</h:column>
+		<h:column>			
+		 <f:facet name="header">Prenom</f:facet>   
+			<h:inputText size="20" value="#{var.prenom}" rendered="#{var.editable}" />
+			<h:outputText size="20" value="#{var.prenom}" rendered="#{not var.editable}"/>
 		</h:column>
 		<h:column>
-			<h:outputText value="#{var.prenom}"/>
+		 <f:facet name="header">Mot de passe</f:facet>   
+			<h:inputText size="20" value="#{var.pswd}" rendered="#{var.editable}" />
+			<h:outputText size="20" value="#{var.pswd}" rendered="#{not var.editable}"/>
 		</h:column>
 		<h:column>
-			<h:outputText value="#{var.pswd}"/>
-		</h:column>
+            <f:facet name="header">Editer</f:facet>
+               <h:commandButton value="Modifier" 
+                  action="#{login.editAction(var)}" 
+                  rendered="#{not var.editable}">        
+  
+               </h:commandButton>
+         </h:column>
+<!--          <h:column> -->
+<!--             <f:facet name="header">Supprimer</f:facet> -->
+<!--                <h:commandButton value="Supprimer"  -->
+<!--                   action="#{login.delete}"  -->
+<!--                   rendered="#{not login.canEdit}">         -->
+<!--                   <f:setPropertyActionListener  -->
+<!--                      target="#{login.userLst}" value="#{var}" /> -->
+<!--                </h:commandButton> -->
+<!--          </h:column> -->
 	</h:dataTable>
+	<br/>
+	<h:commandButton value="Enregistrer"
+          action="#{login.saveAction}" />	
+   </h:form>
 </body> 
 </html>

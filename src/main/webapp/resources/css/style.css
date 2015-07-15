@@ -12,7 +12,7 @@
         border-color: transparent;
     }
 
-body{
+.body{
 	background-color: #ebebeb;
 	font : 11px/18px Arial,Helvetica,sans-serif;
 }
@@ -23,6 +23,30 @@ body{
 	background-color: #FFFFFF;
 	width: 30%;
 	box-shadow: 10px 10px 12px #aaa;
+}
+.userTab {
+	border : solid;
+	border-size: 1px; 
+	border-radius: 15px;
+	background-color: #FFFFFF;
+	box-shadow: 10px 10px 12px #aaa;
+}
+
+.TableHeader{
+   text-align:center;
+   background:none repeat scroll 0 0 #B5B5B5;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+
+.TableOddRow{
+   text-align:center;
+   background:none repeat scroll 0 0 #FFFFFFF;	
+}
+
+.Table{
+   text-align:center;
+   background:none repeat scroll 0 0 #D3D3D3;
 }
 
 .bttmenu{

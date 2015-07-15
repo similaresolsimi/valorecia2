@@ -17,13 +17,25 @@ public class Login {
 	private String name="";
 	private String pswd="";
 	private String result="";
-	private ArrayList<userEntity> lst;
+	private ArrayList<userBean> lst;
 	
-	public ArrayList<userEntity> getLst() {
+	public String saveAction() {
+	    for (userBean b : getLst()){
+	      b.setEditable(false);
+	    }
+	    return null;
+	  }
+		
+	public String editAction(userBean ub){
+	  ub.setEditable(true);	
+	  return null;
+	}
+	
+	public ArrayList<userBean> getLst() {
 		return lst;
 	}
 
-	public void setLst(ArrayList<userEntity> lst) {
+	public void setLst(ArrayList<userBean> lst) {
 		this.lst = lst;
 	}
 
@@ -36,8 +48,9 @@ public class Login {
 		return result;
 	}
 	
-	public ArrayList<userEntity> getUserLst(){
+	public ArrayList<userBean> getUserLst(){
 		lst = myService.finAll();
+		setLst(lst);
 		return lst;
 	}
 	

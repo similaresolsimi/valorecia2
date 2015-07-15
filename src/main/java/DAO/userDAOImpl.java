@@ -18,7 +18,7 @@ public class userDAOImpl implements IuserDAO{
 	@Produces
 	@PersistenceContext
 	private static EntityManager em;
-
+	
 	
 	@Override
 	public userEntity findByLogin(String login, String pswd) {
