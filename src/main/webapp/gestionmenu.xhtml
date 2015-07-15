@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<h:head>
+	<h:outputStylesheet name="style.css" library="css" />
+	<script type="text/javascript" src="tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+    selector: "div",
+    theme: "modern",
+    plugins: [
+        ["advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker"],
+        ["searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
+        ["save table contextmenu directionality emoticons template paste"]
+    ],
+    add_unload_trigger: false,
+    schema: "html5",
+    inline: true,
+    toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image     | print preview media",
+    statusbar: false
+});
+</script> 
+	</h:head>
+	
+	<h:body>
+
+				<ui:insert name="content">
+					<h:form id="window">  
+						<div id="arbre" class="arbre">
+							arbre<br /><br /><br /><br /><br /><br /><br /><br />
+	        			</div>
+	        			<div class="corpspage">
+		        			<div id="edition" class="edition">       
+									<div class="entetemenu">Entete<br /><br /><br /><br /><br /><br /></div>
+									<div class="corpsmenu">Corp de page<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
+									<div class="menugauche">Menu G<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
+									<div class="menudroit">MenuD<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
+									<div class="piedsmenu">Pied de page<br /><br /><br /><br /><br /><br /></div>
+		        			</div> 
+		        		</div>	
+	        			<div id="widget" class="widget">
+	        			Widget<br /><br /><br /><br /><br /><br />
+	        			</div>
+
+    				</h:form>
+				</ui:insert>
+				
+			
+	</h:body>
+</html>

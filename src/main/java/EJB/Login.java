@@ -1,25 +1,44 @@
 package EJB;
 
+import java.util.ArrayList;
+
 import javax.enterprise.inject.Model;
+import javax.faces.bean.ApplicationScoped;
 import javax.inject.Inject;
 
+import Entity.userEntity;
 import Service.IuserService;
 
 @Model
+@ApplicationScoped
 public class Login {
 	@Inject
 	private IuserService myService;
 	private String name="";
 	private String pswd="";
 	private String result="";
+	private ArrayList<userEntity> lst;
 	
+	public ArrayList<userEntity> getLst() {
+		return lst;
+	}
+
+	public void setLst(ArrayList<userEntity> lst) {
+		this.lst = lst;
+	}
+
 	public Login(){
-		
+
 	}
 	
 	public String valide(){
-		myService.authorize("name","ok",name,pswd);
-		return "index";
+		String result= myService.authorize(name,pswd);
+		return result;
+	}
+	
+	public ArrayList<userEntity> getUserLst(){
+		lst = myService.finAll();
+		return lst;
 	}
 	
 	public String getResult() {

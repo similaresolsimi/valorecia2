@@ -8,6 +8,6 @@ public interface IuserDAO {
 
 	public userEntity findByLogin(String name, String pswd);
 	public ArrayList<userEntity> findAll();
-	public void persist(userEntity u);
-	public void remove(userEntity u);
+	public boolean persist(userEntity u);
+	public boolean remove(userEntity u);
 }

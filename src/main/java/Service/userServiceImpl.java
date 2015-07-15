@@ -1,5 +1,7 @@
 package Service;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import DAO.IuserDAO;
@@ -17,14 +19,22 @@ public class userServiceImpl implements IuserService{
 	}
 
 	@Override
-	public String authorize(String nom, String prenom, String login, String pswd) {
+	public String authorize(String login, String pswd) {
 		userEntity u = new userEntity();
-		u.setNom(nom);
-		u.setPrenom(prenom);
 		u.setLogin(login);
 		u.setPswd(pswd);
-		DAO.persist(u);
-		return "ok";
+		if(DAO.findByLogin(login, pswd) != null){
+			return "console.xhtml";
+		}
+		return "non";
+	}
+
+	@Override
+	public ArrayList<userEntity> finAll() {
+		if(DAO.findAll().size() >0){
+			return DAO.findAll();
+		}
+		else return new ArrayList<userEntity>();
 	}
 
 }

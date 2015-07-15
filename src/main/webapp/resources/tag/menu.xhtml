@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:cc="http://java.sun.com/jsf/composite"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:rich="http://richfaces.org/rich">
+<head>
+</head>
+<body>
+<cc:interface>
+			<cc:attribute name="menu" />
+	</cc:interface>
+<cc:implementation >
+
+<h:form>  
+    <p:growl id="messages"/>
+ 
+    <p:menubar>
+        <p:submenu label="Qui sommes nous ?">
+            <p:submenu label="Ss Menu 1.1" >
+                <p:menuitem value="Ss Menu 1.1.1" url="#" />
+                <p:menuitem value="Ss Menu 1.1.2" url="#" />
+            </p:submenu>
+            
+            <p:menuitem value="Ss Menu 1.2" url="#" />
+            <p:separator />
+            <p:menuitem value="Ss Menu 1.3" url="#" />
+        </p:submenu>
+ 
+        <p:submenu label="Nos prestations">
+            <p:submenu label="Ss Menu 2.1" >
+                <p:menuitem value="Ss Menu 2.1.1" url="#" />
+                <p:menuitem value="Ss Menu 2.1.2" url="#" />
+            </p:submenu>
+            
+            <p:menuitem value="Ss Menu 2.2" url="#" />
+            <p:separator />
+            <p:menuitem value="Ss Menu 2.3" url="#" />
+        </p:submenu>
+        
+        <p:submenu label="Nos domaines d'expertises">
+            <p:submenu label="Ss Menu 2.1" >
+                <p:menuitem value="Ss Menu 2.1.1" url="#" />
+                <p:menuitem value="Ss Menu 2.1.2" url="#" />
+            </p:submenu>
+            
+            <p:menuitem value="Ss Menu 2.2" url="#" />
+            <p:separator />
+            <p:menuitem value="Ss Menu 2.3" url="#" />
+        </p:submenu>
+        
+        <p:submenu label="Notre actualité">
+            <p:submenu label="Ss Menu 2.1" >
+                <p:menuitem value="Ss Menu 2.1.1" url="#" />
+                <p:menuitem value="Ss Menu 2.1.2" url="#" />
+            </p:submenu>
+            
+            <p:menuitem value="Ss Menu 2.2" url="#" />
+            <p:separator />
+            <p:menuitem value="Ss Menu 2.3" url="#" />
+        </p:submenu>
+ 
+        
+ 
+        <f:facet name="options">
+            <p:inputText style="margin-right:10px" placeholder="Rechercher"/>
+<!--             <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" /> -->
+        </f:facet>
+    </p:menubar>
+</h:form>
+
+</cc:implementation>
+</body>
+</html>

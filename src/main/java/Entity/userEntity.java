@@ -20,7 +20,7 @@ public class userEntity implements Serializable{
 	 */
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 	private String nom="";
 	private String prenom="";
 	private String login="";
