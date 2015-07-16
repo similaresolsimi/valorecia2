@@ -11,9 +11,9 @@
  <h:form>
 	<h:dataTable styleClass="Table"
          headerClass="TableHeader"
-         rowClasses="TableOddRow" value="#{login.userLst}" var="var">
+         rowClasses="TableOddRow" value="#{login.findAll()}" var="var">
 <!-- 		<h:column> -->
-<!-- 			<h:outputText value="#{var.id}"/> -->
+<!-- 			<h:outputText value="#{var.id}"/> --> 
 <!-- 		</h:column> -->
 		<h:column>
 		 <f:facet name="header">Login</f:facet>   
@@ -43,19 +43,41 @@
   
                </h:commandButton>
          </h:column>
-<!--          <h:column> -->
-<!--             <f:facet name="header">Supprimer</f:facet> -->
-<!--                <h:commandButton value="Supprimer"  -->
-<!--                   action="#{login.delete}"  -->
-<!--                   rendered="#{not login.canEdit}">         -->
-<!--                   <f:setPropertyActionListener  -->
-<!--                      target="#{login.userLst}" value="#{var}" /> -->
-<!--                </h:commandButton> -->
-<!--          </h:column> -->
+         <h:column>
+            <f:facet name="header">Supprimer</f:facet>
+               <h:commandButton value="Supprimer" 
+                  action="#{login.delete(var)}" 
+                  rendered="#{not var.editable}">        
+               </h:commandButton>
+         </h:column>
 	</h:dataTable>
 	<br/>
 	<h:commandButton value="Enregistrer"
-          action="#{login.saveAction}" />	
+          action="#{login.saveAction}" />	<br /><br /><hr /><br /><br />
+          <table>
+      <tr>
+            <td>Nom :</td>
+            <td><h:inputText size="20" value="#{login.name}" /></td>
+      </tr>
+      <tr>
+            <td>Prenom :</td>
+            <td><h:inputText size="20" value="#{login.surname}" /></td>
+      </tr>
+      <tr>
+            <td>Login :</td>
+            <td><h:inputText size="20" value="#{login.login}" /></td>
+      </tr>
+      <tr>
+            <td>Mot de passe :</td>
+            <td><h:inputText size="20" value="#{login.pswd}" /></td>
+      </tr>
+      <tr>
+            <td> </td>
+            <td><h:commandButton value="Ajouter" 
+               action="#{login.persist()}" /></td>
+      </tr>
+      </table>	
+          
    </h:form>
 </body> 
 </html>

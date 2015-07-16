@@ -6,15 +6,16 @@ import javax.enterprise.inject.Model;
 import javax.faces.bean.ApplicationScoped;
 import javax.inject.Inject;
 
-import Entity.userEntity;
 import Service.IuserService;
 
 @Model
 @ApplicationScoped
-public class Login {
+public class userJSF {
 	@Inject
 	private IuserService myService;
 	private String name="";
+	private String surname="";
+	private String login="";
 	private String pswd="";
 	private String result="";
 	private ArrayList<userBean> lst;
@@ -31,6 +32,16 @@ public class Login {
 	  return null;
 	}
 	
+	public String delete(userBean ub){
+		myService.remove(ub);
+		 return null;
+	}
+	
+	public String persist(){
+		myService.persist(new userBean(name,surname,login,pswd));
+		return null;
+	}
+	
 	public ArrayList<userBean> getLst() {
 		return lst;
 	}
@@ -39,7 +50,7 @@ public class Login {
 		this.lst = lst;
 	}
 
-	public Login(){
+	public userJSF(){
 
 	}
 	
@@ -48,7 +59,7 @@ public class Login {
 		return result;
 	}
 	
-	public ArrayList<userBean> getUserLst(){
+	public ArrayList<userBean> findAll(){
 		lst = myService.finAll();
 		setLst(lst);
 		return lst;
@@ -57,24 +68,35 @@ public class Login {
 	public String getResult() {
 		return result;
 	}
-
 	public void setResult(String result) {
 		this.result = result;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public String getPswd() {
 		return pswd;
 	}
-
 	public void setPswd(String pswd) {
 		this.pswd = pswd;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
 	}
 }

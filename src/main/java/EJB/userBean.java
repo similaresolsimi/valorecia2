@@ -1,10 +1,9 @@
 package EJB;
 
-import javax.faces.bean.ManagedBean;
 
-@ManagedBean
 public class userBean {
 
+	private int id;
 	private String nom="";
 	private String prenom="";
 	private String login="";
@@ -12,6 +11,9 @@ public class userBean {
 	private boolean editable=false;
 	
 	public userBean(){
+		
+	}
+	public userBean(String nom,String prenom,String login,String pswd){
 		
 	}
 	
@@ -40,10 +42,20 @@ public class userBean {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+
 	public boolean getEditable() {
 		return editable;
 	}
+
 	public void setEditable(boolean editable) {
 		this.editable = editable;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

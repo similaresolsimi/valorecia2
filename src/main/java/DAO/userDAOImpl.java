@@ -1,7 +1,9 @@
 package DAO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.ejb.Stateless;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,19 +14,23 @@ import javax.persistence.Query;
 
 import Entity.userEntity;
 
-
-public class userDAOImpl implements IuserDAO{
+@Stateless
+public class userDAOImpl implements IuserDAO, Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private static EntityManagerFactory fact= Persistence.createEntityManagerFactory("primary");
+
 	@Produces
 	@PersistenceContext
-	private static EntityManager em;
-	
+	private static EntityManager em =fact.createEntityManager();;
 	
 	@Override
 	public userEntity findByLogin(String login, String pswd) {
-		EntityManagerFactory fact= Persistence.createEntityManagerFactory("primary");
-		em = fact.createEntityManager();
-		userEntity result = null;
+		userEntity result = null; 
 		Query q = em.createNativeQuery("SELECT id,login,nom,prenom,pswd FROM userEntity WHERE login =:login AND pswd =:pswd",userEntity.class);       
 		q.setParameter("login", login);  
 		q.setParameter("pswd", pswd); 
@@ -38,8 +44,6 @@ public class userDAOImpl implements IuserDAO{
 
 	@Override
 	public ArrayList<userEntity> findAll() {
-		EntityManagerFactory fact= Persistence.createEntityManagerFactory("primary");
-		em = fact.createEntityManager();
 		Query q = em.createQuery("FROM  userEntity");    
 		@SuppressWarnings("unchecked")
 		ArrayList<userEntity> lst = (ArrayList<userEntity>) q.getResultList();
@@ -48,8 +52,6 @@ public class userDAOImpl implements IuserDAO{
 
 	@Override
 	public boolean persist(userEntity u) {
-		EntityManagerFactory fact= Persistence.createEntityManagerFactory("primary");
-		em = fact.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(u);
 		em.getTransaction().commit();
@@ -58,10 +60,8 @@ public class userDAOImpl implements IuserDAO{
 
 	@Override
 	public boolean remove(userEntity u) {
-		EntityManagerFactory fact= Persistence.createEntityManagerFactory("primary");
-		em = fact.createEntityManager();
 		em.getTransaction().begin();
-		em.remove(u);
+		em.remove(em.contains(u) ? u : em.merge(u));
 		em.getTransaction().commit();	
 		return true;
 	}

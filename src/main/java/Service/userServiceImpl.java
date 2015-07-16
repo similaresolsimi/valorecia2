@@ -42,6 +42,7 @@ public class userServiceImpl implements IuserService{
 		ArrayList<userBean> beans = new ArrayList<userBean>();
 		for(userEntity ue : lst){
 			userBean b = new userBean();
+			b.setId(ue.getId());
 			b.setLogin(ue.getLogin());
 			b.setNom(ue.getNom());
 			b.setPrenom(ue.getPrenom());
@@ -49,6 +50,27 @@ public class userServiceImpl implements IuserService{
 			beans.add(b);
 		}
 		return beans;
+	}
+
+	@Override
+	public void remove(userBean ub) {
+		userEntity ue = new userEntity();
+		ue.setLogin(ub.getLogin());
+		ue.setNom(ub.getNom());
+		ue.setPrenom(ub.getPrenom());
+		ue.setPswd(ub.getPswd());
+		ue.setId(ub.getId());
+	    DAO.remove(ue);
+	}
+
+	@Override
+	public void persist(userBean ub) {
+		userEntity ue = new userEntity();
+		ue.setLogin(ub.getLogin());
+		ue.setNom(ub.getNom());
+		ue.setPrenom(ub.getPrenom());
+		ue.setPswd(ub.getPswd());
+		DAO.persist(ue);	
 	}
 
 }
