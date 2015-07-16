@@ -4,8 +4,8 @@
 <hibernate-configuration>
  <session-factory name="">
   <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-  <property name="hibernate.connection.password">admin87</property>
-  <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/valorecia;create=true</property>
+  <property name="hibernate.connection.password">admin</property>
+  <property name="hibernate.connection.url">jdbc:postgresql://localhost:5434/valorecia;create=true</property>
   <property name="hibernate.connection.username">postgres</property>
   <mapping class="Entity.userEntity"/>
  </session-factory>

@@ -12,7 +12,7 @@
  <h:form>
 	<h:dataTable styleClass="Table"
          headerClass="TableHeader"
-         rowClasses="TableOddRow" value="#{userJSF.findAll()}" var="var">
+         rowClasses="TableOddRow" value="#{userJSF.lst}" var="var">
 <!-- 		<h:column> -->
 <!-- 			<h:outputText value="#{var.id}"/> --> 
 <!-- 		</h:column> -->
@@ -39,7 +39,7 @@
 		<h:column>
             <f:facet name="header">Editer</f:facet>
                <h:commandButton value="Modifier" 
-                  action="#{login.editAction(var)}" 
+                  action="#{userJSF.editAction(var)}" 
                   rendered="#{not var.editable}">        
   
                </h:commandButton>

@@ -53,7 +53,7 @@ public class userDAOImpl implements IuserDAO, Serializable{
 	@Override
 	public boolean persist(userEntity u) {
 		em.getTransaction().begin();
-		em.persist(u);
+		em.persist(em.contains(u) ? u : em.merge(u));
 		em.getTransaction().commit();
 		return true;
 	}
