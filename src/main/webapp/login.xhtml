@@ -5,6 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 	<h:head>
+	<h:outputStylesheet name="style.css" library="css" />
 	</h:head>
 			
 	<h:body>
@@ -19,18 +20,18 @@
 				<h:form id="formlogin">
 					<h:outputText value="Login" />
 					<br />
-					<h:inputText id="login" value="#{login.name}" required="true"
+					<h:inputText id="login" value="#{userJSF.name}" required="true"
 					requiredMessage="Saisir un nom" />
 					<br />
 					<h:outputText value="Password" />
 					<br />
-					<h:inputSecret id="mdp" value="#{login.pswd}" required="true"
+					<h:inputSecret id="mdp" value="#{userJSF.pswd}" required="true"
 					requiredMessage="Saisir votre mot de passe" />
 					<br />
 					<h:outputText value="Verifier vos identifiants" rendered="#{not empty facesContext.messageList}"
                 	styleClass="error" />
 					<br />
-					<h:commandButton id="submit" action="#{login.valide}"
+					<h:commandButton id="submit" action="#{userJSF.valide}"
 						value="Valider" />
 					<br />
 					<br />

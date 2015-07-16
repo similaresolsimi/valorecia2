@@ -1,0 +1,43 @@
+<!DOCTYPE HTML> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:tag="http://java.sun.com/jsf/composite/tag"> 
+
+<h:head>
+<h:outputStylesheet name="style.css" library="css" />
+<h:outputStylesheet name="menu.css" library="css" />
+</h:head> 
+<h:body> 
+<center>
+	<div id="main" class="main">
+
+		<div id="bandeau" class="bandeau">
+			<h:graphicImage id="imgbandeau" class="imgbandeau" value="/resources/img/imgbandeau.png" />
+			<h:link/><h:graphicImage id="imglogo" class="imglogo" value="/resources/img/logo_site_Valorecia.gif" />
+		</div>
+		
+		<div id="bandeaumenu" class="bandeaumenu">
+  		<f:view>
+			<tag:menu />
+		</f:view>
+		</div>
+		
+		<div id="corpspage" class="corpspage">
+		CORPS DE PAGE<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<f:view>
+		<tag:ContactRequest></tag:ContactRequest>
+		</f:view>
+		</div>
+		
+	</div>
+	<br /><br /><hr /><br />
+	<div id="piedspage" class="piedspage">
+	© Copyright Valorecia 2015
+	</div>
+</center>
+</h:body> 
+</html>

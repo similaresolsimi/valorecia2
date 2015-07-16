@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:s="http://jboss.com/products/seam/taglib"> 
 
 <h:head>
 <h:outputStylesheet name="style.css" library="css" />
@@ -11,7 +12,7 @@
  <h:form>
 	<h:dataTable styleClass="Table"
          headerClass="TableHeader"
-         rowClasses="TableOddRow" value="#{login.findAll()}" var="var">
+         rowClasses="TableOddRow" value="#{userJSF.findAll()}" var="var">
 <!-- 		<h:column> -->
 <!-- 			<h:outputText value="#{var.id}"/> --> 
 <!-- 		</h:column> -->
@@ -46,35 +47,35 @@
          <h:column>
             <f:facet name="header">Supprimer</f:facet>
                <h:commandButton value="Supprimer" 
-                  action="#{login.delete(var)}" 
+                  action="#{userJSF.delete(var)}" 
                   rendered="#{not var.editable}">        
                </h:commandButton>
          </h:column>
 	</h:dataTable>
 	<br/>
 	<h:commandButton value="Enregistrer"
-          action="#{login.saveAction}" />	<br /><br /><hr /><br /><br />
+          action="#{userJSF.saveAction}" />	<br /><br /><hr /><br /><br />
           <table>
       <tr>
             <td>Nom :</td>
-            <td><h:inputText size="20" value="#{login.name}" /></td>
+            <td><h:inputText size="20" value="#{userJSF.name}" /></td>
       </tr>
       <tr>
             <td>Prenom :</td>
-            <td><h:inputText size="20" value="#{login.surname}" /></td>
+            <td><h:inputText size="20" value="#{userJSF.surname}" /></td>
       </tr>
       <tr>
             <td>Login :</td>
-            <td><h:inputText size="20" value="#{login.login}" /></td>
+            <td><h:inputText size="20" value="#{userJSF.login}" /></td>
       </tr>
       <tr>
             <td>Mot de passe :</td>
-            <td><h:inputText size="20" value="#{login.pswd}" /></td>
+            <td><h:inputText size="20" value="#{userJSF.pswd}" /></td>
       </tr>
       <tr>
             <td> </td>
             <td><h:commandButton value="Ajouter" 
-               action="#{login.persist()}" /></td>
+               action="#{userJSF.persist()}" /></td>
       </tr>
       </table>	
           
