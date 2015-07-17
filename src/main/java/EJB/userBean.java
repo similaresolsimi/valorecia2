@@ -1,8 +1,14 @@
 package EJB;
 
+import java.io.Serializable;
 
-public class userBean {
 
+public class userBean implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String nom="";
 	private String prenom="";
@@ -43,19 +49,17 @@ public class userBean {
 		this.prenom = prenom;
 	}
 
-	public boolean getEditable() {
-		return editable;
-	}
-
-	public void setEditable(boolean editable) {
-		this.editable = editable;
-	}
-
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	public boolean isEditable() {
+		return editable;
+	}
+	public void setEditable(boolean editable) {
+		this.editable = editable;
 	}
 }

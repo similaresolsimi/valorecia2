@@ -16,17 +16,18 @@ public class userJSF {
 	private String login="";
 	private String pswd="";
 	private String result="";
+	
 	private ArrayList<userBean> lst;
 	
 	public String saveAction() {
-	    for (userBean b : getLst()){
+	    for (userBean b : lst){
 	      b.setEditable(false);
 	    }
 	    return null;
 	  }
 		
 	public String editAction(userBean ub){
-	  ub.setEditable(true);	
+	  ub.setEditable(true);
 	  return null;
 	}
 	
@@ -41,16 +42,14 @@ public class userJSF {
 	}
 	
 	public ArrayList<userBean> getLst() {
-		return lst;
+		return myService.finAll();
 	}
 
 	public void setLst(ArrayList<userBean> lst) {
 		this.lst = lst;
 	}
 
-	public userJSF(){
-
-	}
+	public userJSF(){}
 	
 	public String valide(){
 		String result= myService.authorize(name,pswd);
@@ -59,8 +58,7 @@ public class userJSF {
 	
 	public ArrayList<userBean> findAll(){
 		lst = myService.finAll();
-		setLst(lst);
-		return lst;
+		return null;
 	}
 	
 	public String getResult() {

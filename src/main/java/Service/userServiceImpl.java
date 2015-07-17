@@ -64,24 +64,14 @@ public class userServiceImpl implements IuserService{
 	}
 
 	@Override
-	public void persist(userBean ub) {
-		userEntity ue = new userEntity();
-		ue.setLogin(ub.getLogin());
-		ue.setNom(ub.getNom());
-		ue.setPrenom(ub.getPrenom());
-		ue.setPswd(ub.getPswd());
-		DAO.persist(ue);	
-	}
-
-	@Override
-	public void persist(String nom, String prenom, String login, String pswd) {
+	public void persist(String nom,String prenom,String login,String pswd) {
 		userEntity ue = new userEntity();
 		ue.setLogin(login);
 		ue.setNom(nom);
 		ue.setPrenom(prenom);
 		ue.setPswd(pswd);
-		DAO.persist(ue);
-		
+		DAO.persist(ue);	
 	}
+
 
 }
