@@ -73,4 +73,15 @@ public class userServiceImpl implements IuserService{
 		DAO.persist(ue);	
 	}
 
+	@Override
+	public void persist(String nom, String prenom, String login, String pswd) {
+		userEntity ue = new userEntity();
+		ue.setLogin(login);
+		ue.setNom(nom);
+		ue.setPrenom(prenom);
+		ue.setPswd(pswd);
+		DAO.persist(ue);
+		
+	}
+
 }

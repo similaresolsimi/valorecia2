@@ -3,13 +3,11 @@ package EJB;
 import java.util.ArrayList;
 
 import javax.enterprise.inject.Model;
-import javax.faces.bean.ApplicationScoped;
 import javax.inject.Inject;
 
 import Service.IuserService;
 
 @Model
-@ApplicationScoped
 public class userJSF {
 	@Inject
 	private IuserService myService;
@@ -38,7 +36,7 @@ public class userJSF {
 	}
 	
 	public String persist(){
-		myService.persist(new userBean(name,surname,login,pswd));
+		myService.persist(name,surname,login,pswd);
 		return null;
 	}
 	
